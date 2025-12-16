@@ -3,6 +3,10 @@ namespace Management.Infrastucture.Data
 {
    public class DbContext
     {
+        public DbContext()
+        {
+            this.Students = new Student[12];
+        }
         public Student[] Students { get; set; }
     }
 }
