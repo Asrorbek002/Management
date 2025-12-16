@@ -3,7 +3,6 @@ namespace Management.Infrastucture.Data
 {
    public class DbContext
     {
-        public Student[] St
-
+        public Student[] Students { get; set; }
     }
 }
