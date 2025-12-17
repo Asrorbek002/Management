@@ -64,6 +64,9 @@ if (!access) {
 
 ## GIF
 
+![Gif](https://github.com/user-attachments/assets/2d2d4455-9d63-4496-bab9-6418b957e17d)
+
+
 ---
 
 ## Mualliflar
