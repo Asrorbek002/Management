@@ -48,17 +48,6 @@ Dastur quyidagi funksiyalarni bajaradi:
 
 ---
 
-## 👨‍💻 Mualliflar
-
-**Asrorbek** 
-- GitHub:(https://github.com/Asrorbek002)  
-- Email: asrorbekabdurashidov5@gmail.com
-##
-   **Ali**
-- GitHub: (https://github.com/ali-dev02)
-- Email: alivaliyev20022@gmail.com
-
----
 
 ## 🔖 Bonus
 
@@ -90,6 +79,18 @@ internal class Program
 }
 Ushbu dastur talabalarning qabul jarayonini boshqarish uchun ishlab chiqilgan va
 maksimal 12 ta talabani ro‘yxatdan o‘tkazadi.
+```
+---
+## 👨‍💻 Mualliflar
 
+**Asrorbek** 
+- GitHub:(https://github.com/Asrorbek002)  
+- Email: asrorbekabdurashidov5@gmail.com
+##
+   **Ali**
+- GitHub: (https://github.com/ali-dev02)
+- Email: alivaliyev20022@gmail.com
+
+---
 
 
