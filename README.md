@@ -1,78 +1,95 @@
-# Talabalar Qabul Dasturi (Student Enrollment Console App)
+# 🎓 Talabalar Qabul Dasturi
 
-![C#](https://img.shields.io/badge/language-C%23-blue.svg)
+![Gif](https://github.com/user-attachments/assets/0bedcd35-7b75-4548-852d-90fe2ed17a94)
 
-## Loyihaning maqsadi
 
-Ushbu konsol dasturi orqali maksimal 12 talaba ro‘yxatdan o‘tishi mumkin. Dasturga kirish uchun parol (default: `1234`) talab qilinadi, 3 ta xato urinishdan keyin dastur yopiladi. Dastur orqali talabalar ismi va familiyasi kiritilib, ularning soni va qabul statistikasi ko‘rsatiladi.
+Bu dastur C# tilida yozilgan va talabalarning ro‘yxatdan o‘tishini boshqarish tizimini amalga oshiradi.  
 
----
+Dastur quyidagi funksiyalarni bajaradi:
 
-## Asosiy funksiyalar
-
-- Parol bilan tizimga kirish (max 3 urinish)
-- Talabalarni ro‘yxatdan o‘tkazish (ism va familiya bilan)
-- Ro‘yxatdan o‘tgan talabalar sonini ko‘rsatish
-- Qabul statistikasi (jami qabul qilinganlar, maksimal sig‘im, bo‘sh joylar)
-- Maksimal 12 talaba qabul qilinadi
+- 🔒 Parol bilan tizimga kirish (3 urinish imkoniyati)  
+- 👤 Yangi talaba qo‘shish (ism, familiya va ID avtomatik beriladi)  
+- 📋 Talabalar ro‘yxatini ko‘rsatish  
+- 📊 Qabul statistikasi (maksimal 12 ta talaba)  
 
 ---
 
-## Dastur ishlashi
+## 📌 Xususiyatlar
 
-1. Dastur ishga tushganda, foydalanuvchidan parol so‘raladi.
-2. Parol noto‘g‘ri bo‘lsa, 3 urinishgacha imkoniyat beriladi.
-3. Parol to‘g‘ri kiritilsa, menyu paydo bo‘ladi:
-    - 1: Talaba ro‘yxatdan o‘tadi (ism va familiya)
-    - 2: Ro‘yxatdan o‘tganlar sonini ko‘rish
-    - 3: Qabul statistikasi
-    - 0: Dasturdan chiqish
+| Funksiya || Tavsif |
+| Tizimga kirish | Parol tekshiriladi, 3 urinish imkoniyati mavjud |
+| Yangi talaba qo‘shish | Ism va familiya kiritiladi, ID tasodifiy generatsiya qilinadi |
+| Talabalar ro‘yxati | Hozirgi qabul qilingan talabalar ko‘rsatiladi |
+| Qabul statistikasi | Qabul qilinganlar soni va bo‘sh joylar ko‘rsatiladi |
 
 ---
 
-## O'rnatish va ishga tushirish
+## ⚡ Ishlatish
 
-1. Visual Studio yoki .NET CLI yordamida loyiha faylini oching.
+1. Dastur ishlashi uchun Visual Studio yoki boshqa C# IDE oching.
 2. `Program.cs` faylini ishga tushiring.
-3. Konsolda ko‘rsatilgan ko‘rsatmalarga amal qiling.
+3. Tizimga kirish uchun parolni kiriting: `1234`  
+4. Menyudan kerakli amallarni tanlang:
+
+1 - Yangi talaba qo‘shish
+2 - Talabalar ro‘yxati
+3 - Qabul statistikasi
+0 - Chiqish
+
+
+5. Dastur maksimal 12 ta talabani qabul qiladi.
 
 ---
 
+## 🛠 Texnologiyalar
 
-## Kod namunasi
+- .NET 9 
+- Konsol dasturi (Console Application)
+
+---
+
+## 👨‍💻 Mualliflar
+
+**Asrorbek** 
+- GitHub:(https://github.com/Asrorbek002)  
+- Email: asrorbekabdurashidov5@gmail.com
+##
+   **Ali**
+- GitHub: (https://github.com/ali-dev02)
+- Email: alivaliyev20022@gmail.com
+
+---
+
+## 🔖 Bonus
+
+Dastur foydalanuvchi tajribasini oshirish uchun quyidagi belgilar bilan ishlaydi:
+
+- ✅ Muvaffaqiyatli ro‘yxatdan o‘tgan talaba  
+- ❌ Noto‘g‘ri parol  
+- ⛔ Maksimal urinishlar yoki qabul chegarasi  
+- 📋 Talabalar ro‘yxati  
+- 📊 Qabul statistikasi  
+
+---
+
+## 📂 Kod namunasi
 
 ```csharp
-// Parol tekshirish va 3 urinish imkoniyati
-int urinishlar = 0;
-bool access = false;
-do {
-    Console.Write("Parolngizni kiriting: ");
-    string password = Console.ReadLine();
-    if (password == "1234") {
-        access = true;
-        break;
+using Management.Application.Services;
+
+internal class Program
+{
+    static StudentService studentService = new StudentService();
+    const int urunishlar = 3;
+    const int maxsigim = 12;
+
+    static void Main(string[] args)
+    {
+        // Kodning to‘liq ishlash logikasi shu yerda
     }
-    urinishlar++;
-    Console.WriteLine($"Parol noto‘g‘ri! Qolgan urinishlar: {3 - urinishlar}");
-} while (urinishlar < 3);
-if (!access) {
-    Console.WriteLine("Urinishlar soni tugadi. Dastur yopildi!");
-    return;
 }
-```
----
-
-## GIF
-
-![Gif](https://github.com/user-attachments/assets/2d2d4455-9d63-4496-bab9-6418b957e17d)
+Ushbu dastur talabalarning qabul jarayonini boshqarish uchun ishlab chiqilgan va
+maksimal 12 ta talabani ro‘yxatdan o‘tkazadi.
 
 
----
 
-## Mualliflar
-
-Asrorbek002 – Loyihaning dasturchisi va muallifi
-
-ali-dev02 – Loyihaning hamkor dasturchisi
-
----
