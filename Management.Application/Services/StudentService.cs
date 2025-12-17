@@ -20,7 +20,8 @@ namespace Management.Application.Services
                 Lastname = lastName,
             };
 
-            this.DbContext.Students[0] = newStudent;
+            this.DbContext.Students[this.DbContext.StudentCount] = newStudent;
+            this.DbContext.StudentCount++;
         }
     }
 }

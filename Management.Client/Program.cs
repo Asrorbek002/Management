@@ -1,10 +1,14 @@
-﻿namespace Management.Client
+﻿using Management.Application.Services;
+
+namespace Management.Client
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var studentService= new StudentService();
+            studentService.AddStudent("Asrorbek", "Abdurashidov");
+            studentService.AddStudent("Ali", "Aliyev");
         }
     }
 }
