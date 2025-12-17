@@ -1,6 +1,5 @@
 # Talabalar Qabul Dasturi (Student Enrollment Console App)
 
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![C#](https://img.shields.io/badge/language-C%23-blue.svg)
 
 ## Loyihaning maqsadi
