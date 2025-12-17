@@ -6,6 +6,6 @@
 
         public string Firstname { get; set; }
 
-        public string lastname { get; set; }
+        public string Lastname { get; set; }
      }
 }

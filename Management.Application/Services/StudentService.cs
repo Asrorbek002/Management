@@ -15,9 +15,13 @@ namespace Management.Application.Services
         {
             Student newStudent = new Student
             {
+                Id = new Random ().Next(1,1000).ToString(),
                 Firstname = firstName,
-                lastname = lastName,
+                Lastname = lastName,
             };
+
+            this.DbContext.Students[this.DbContext.StudentCount] = newStudent;
+            this.DbContext.StudentCount++;
         }
     }
 }
