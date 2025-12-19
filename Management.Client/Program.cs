@@ -21,7 +21,7 @@ internal class Program
             if (password == "1234")
             {
                 access = true;
-                Console.WriteLine($"\nXush kelibsiz {Asrornek!}");
+                Console.WriteLine($"\nXush kelibsiz {Asrorbek!}");
                 Console.ReadLine();
                 break;
             }
