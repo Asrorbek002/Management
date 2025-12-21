@@ -11,7 +11,6 @@ internal class Program
         int urinishlar = 0;
         bool access = false;
 
-        // Tizimga kirish
         do
         {
             Console.Clear();
