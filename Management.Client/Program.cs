@@ -3,36 +3,37 @@
 internal class Program
 {
     static StudentService studentService = new StudentService();
-    const int urunishlar = 3;
-    const int maxsigim = 12;
+    const int MaxUrinish = 3;    // Parol urinishlar soni
+    const int MaxSigim = 12;     // Maksimal talaba soni
 
     static void Main(string[] args)
     {
         int urinishlar = 0;
         bool access = false;
 
+        // Tizimga kirish
         do
         {
             Console.Clear();
             Console.WriteLine("TIZIMGA KIRISH");
-            Console.Write("Parolngizni kiriting: ");
+            Console.Write("Parolni kiriting: ");
             string password = Console.ReadLine();
 
             if (password == "1234")
             {
                 access = true;
-                Console.WriteLine($"\nXush kelibsiz {Asrorbek!}");
+                Console.WriteLine("\nXush kelibsiz Asrorbek!");
                 Console.ReadLine();
                 break;
             }
             else
             {
                 urinishlar++;
-                Console.WriteLine($"Parol noto‘g‘ri! Qolgan urinishlar: {urunishlar - urinishlar}");
+                Console.WriteLine($"Parol noto‘g‘ri! Qolgan urinishlar: {MaxUrinish - urinishlar}");
                 Console.ReadLine();
             }
 
-        } while (urinishlar < urunishlar);
+        } while (urinishlar < MaxUrinish);
 
         if (!access)
         {
@@ -67,10 +68,11 @@ internal class Program
                     ShowStatistics();
                     break;
                 case "0":
-                    Console.WriteLine("\n Dastur tugadi. Xayr!");
+                    Console.WriteLine("\nDastur tugadi. Xayr!");
+                    Console.ReadLine();
                     break;
                 default:
-                    Console.WriteLine(" Noto‘g‘ri tanlov!");
+                    Console.WriteLine("Noto‘g‘ri tanlov!");
                     Console.ReadLine();
                     break;
             }
@@ -82,37 +84,57 @@ internal class Program
     {
         Console.Clear();
 
-        if (studentService.DbContext.StudentCount >= maxsigim)
+        if (studentService.DbContext.Students == null)
         {
-            Console.WriteLine(" QABUL YOPIQ! Maksimal 12 ta talaba qabul qilinadi.");
+            Console.WriteLine("Talabalar ma'lumotlar bazasi mavjud emas!");
             Console.ReadLine();
             return;
         }
 
-        Console.Write(" Talaba ismini kiriting\n ISM: ");
-        string firstName = Console.ReadLine();
+        if (studentService.DbContext.StudentCount >= MaxSigim)
+        {
+            Console.WriteLine($"QABUL YOPIQ! Maksimal {MaxSigim} ta talaba qabul qilinadi.");
+            Console.ReadLine();
+            return;
+        }
 
-        Console.Write(" Talaba familiyasini kiriting\n FAMILYA: ");
-        string lastName = Console.ReadLine();
+        Console.Write("Talaba ismini kiriting\nISM: ");
+        string firstName = Console.ReadLine()?.Trim();
+        if (string.IsNullOrWhiteSpace(firstName))
+        {
+            Console.WriteLine("Ism bo‘sh bo‘lishi mumkin emas!");
+            Console.ReadLine();
+            return;
+        }
+
+        Console.Write("Talaba familiyasini kiriting\nFAMILYA: ");
+        string lastName = Console.ReadLine()?.Trim();
+        if (string.IsNullOrWhiteSpace(lastName))
+        {
+            Console.WriteLine("Familiya bo‘sh bo‘lishi mumkin emas!");
+            Console.ReadLine();
+            return;
+        }
 
         studentService.AddStudent(firstName, lastName);
 
         var addedStudent = studentService.DbContext.Students[studentService.DbContext.StudentCount - 1];
-        Console.WriteLine($"\n {addedStudent.Firstname} {addedStudent.Lastname} muvaffaqiyatli ro‘yxatdan o‘tdingiz!");
-        Console.WriteLine($" TALABA ID: {addedStudent.Id}");
+        Console.WriteLine($"\n{addedStudent.Firstname} {addedStudent.Lastname} muvaffaqiyatli ro‘yxatdan o‘tdingiz!");
+        Console.WriteLine($"TALABA ID: {addedStudent.Id}");
         Console.ReadLine();
     }
 
     static void ShowStudents()
     {
         Console.Clear();
-        if (studentService.DbContext.StudentCount == 0)
+
+        if (studentService.DbContext.Students == null || studentService.DbContext.StudentCount == 0)
         {
-            Console.WriteLine(" Hech qanday talaba yo‘q.");
+            Console.WriteLine("Hech qanday talaba yo‘q.");
         }
         else
         {
-            Console.WriteLine(" Talabalar ro‘yxati:\n");
+            Console.WriteLine("Talabalar ro‘yxati:\n");
             for (int i = 0; i < studentService.DbContext.StudentCount; i++)
             {
                 var s = studentService.DbContext.Students[i];
@@ -125,11 +147,13 @@ internal class Program
     static void ShowStatistics()
     {
         Console.Clear();
-        int count = studentService.DbContext.StudentCount;
+
+        int count = studentService.DbContext.Students?.Length ?? 0; 
+
         Console.WriteLine("QABUL STATISTIKASI\n");
         Console.WriteLine($"Qabul qilinganlar: {count} ta");
-        Console.WriteLine($"Maksimal sig‘im: {maxsigim} ta");
-        Console.WriteLine($"Bo‘sh joylar: {maxsigim - count} ta");
+        Console.WriteLine($"Maksimal sig‘im: {MaxSigim} ta");
+        Console.WriteLine($"Bo‘sh joylar: {MaxSigim - count} ta");
         Console.ReadLine();
     }
 }
